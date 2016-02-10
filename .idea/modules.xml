@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ACS.iml" filepath="$PROJECT_DIR$/ACS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Access/Access.iml" filepath="$PROJECT_DIR$/Access/Access.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AdminClient/AdminClient.iml" filepath="$PROJECT_DIR$/AdminClient/AdminClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ArduinoClient/ArduinoClient.iml" filepath="$PROJECT_DIR$/ArduinoClient/ArduinoClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Syslog/Syslog.iml" filepath="$PROJECT_DIR$/Syslog/Syslog.iml" />
+    </modules>
+  </component>
+</project>

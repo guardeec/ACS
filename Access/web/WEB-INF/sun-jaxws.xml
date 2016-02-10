@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<endpoints xmlns='http://java.sun.com/xml/ns/jax-ws/ri/runtime' version='2.0'>
+
+    <endpoint
+            name='TechnicalSOAP'
+            implementation='server.services.client.admin.TechnicalSOAP'
+            url-pattern='/services/TechnicalSOAP'/>
+    <endpoint
+            name='SecuritySOAP'
+            implementation='server.services.client.admin.SecuritySOAP'
+            url-pattern='/services/SecuritySOAP'/>
+    <endpoint
+            name='ReceptionSOAP'
+            implementation='server.services.client.admin.ReceptionSOAP'
+            url-pattern='/services/ReceptionSOAP'/>
+    <endpoint
+            name='HRSoap'
+            implementation='server.services.client.admin.HRSoap'
+            url-pattern='/services/HRSoap'/>
+</endpoints>

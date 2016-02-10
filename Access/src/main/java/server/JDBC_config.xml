@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        "
+        >
+
+       <!--                                      -->
+       <!--                   Pools              -->
+       <!--                                      -->
+
+       <!-- GetAccessDAO Pool -->
+       <bean id="dataSourceArduino" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <!-- GetAccessDAO -->
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
+              <property name="user" value="arduino" />
+              <property name="password" value="Ip}%pS#\1`Nj6CSA_uhJANRlsTweV/_KK#X-AqGZQ6gVDvY{E" />
+              <!-- pool sizing -->
+              <property name="initialPoolSize" value="6" />
+              <property name="minPoolSize" value="6" />
+              <property name="maxPoolSize" value="100" />
+              <property name="acquireIncrement" value="3" />
+              <property name="maxStatements" value="0" />
+              <!-- retries -->
+              <property name="acquireRetryAttempts" value="30" />
+              <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+              <property name="breakAfterAcquireFailure" value="false" />
+              <!-- refreshing connections -->
+              <property name="maxIdleTime" value="180" /> <!-- 3min -->
+              <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+              <!-- timeouts and testing -->
+              <property name="checkoutTimeout" value="5000" /> <!-- 5s -->
+              <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+              <property name="testConnectionOnCheckout" value="true" />
+              <property name="preferredTestQuery" value="SELECT 1" />
+              <property name="testConnectionOnCheckin" value="true" />
+       </bean>
+       <!-- technical Pool -->
+       <bean id="dataSourceDeviceAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <!-- GetAccessDAO -->
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
+              <property name="user" value="technical_department" />
+              <property name="password" value="zJ*=t%QHF;M@c)\`gNN}^pA;~)tP2D''ow#M-^rni$d#R%Rm:I" />
+              <!-- pool sizing -->
+              <property name="initialPoolSize" value="3" />
+              <property name="minPoolSize" value="6" />
+              <property name="maxPoolSize" value="1000" />
+              <property name="acquireIncrement" value="3" />
+              <property name="maxStatements" value="0" />
+              <!-- retries -->
+              <property name="acquireRetryAttempts" value="1" />
+              <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+              <property name="breakAfterAcquireFailure" value="false" />
+              <!-- refreshing connections -->
+              <property name="maxIdleTime" value="180" /> <!-- 3min -->
+              <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+              <!-- timeouts and testing -->
+              <property name="checkoutTimeout" value="1000" /> <!-- 1s -->
+              <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+              <property name="testConnectionOnCheckout" value="true" />
+              <property name="preferredTestQuery" value="SELECT 1" />
+              <property name="testConnectionOnCheckin" value="true" />
+       </bean>
+       <!-- guestCardAdmin Pool -->
+       <bean id="dataSourceGuestCardAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <!-- GetAccessDAO -->
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
+              <property name="user" value="reception_department" />
+              <property name="password" value="CU`>Yy.bN1fy./,$;gZ[V,;rAU{n?zos=:AZYO$P.+q+U/OY)" />
+              <!-- pool sizing -->
+              <property name="initialPoolSize" value="3" />
+              <property name="minPoolSize" value="6" />
+              <property name="maxPoolSize" value="1000" />
+              <property name="acquireIncrement" value="3" />
+              <property name="maxStatements" value="0" />
+              <!-- retries -->
+              <property name="acquireRetryAttempts" value="30" />
+              <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+              <property name="breakAfterAcquireFailure" value="false" />
+              <!-- refreshing connections -->
+              <property name="maxIdleTime" value="180" /> <!-- 3min -->
+              <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+              <!-- timeouts and testing -->
+              <property name="checkoutTimeout" value="5000" /> <!-- 5s -->
+              <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+              <property name="testConnectionOnCheckout" value="true" />
+              <property name="preferredTestQuery" value="SELECT 1" />
+              <property name="testConnectionOnCheckin" value="true" />
+       </bean>
+       <!-- userAdmin Pool -->
+       <bean id="dataSourceUserAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <!-- GetAccessDAO -->
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
+              <property name="user" value="hr_department" />
+              <property name="password" value="+%hM9_f>+gYG@!FJZ6kok@>jq#C@q/lBo2,Dm~crwAd*@ZcK" />
+              <!-- pool sizing -->
+              <property name="initialPoolSize" value="3" />
+              <property name="minPoolSize" value="6" />
+              <property name="maxPoolSize" value="1000" />
+              <property name="acquireIncrement" value="3" />
+              <property name="maxStatements" value="0" />
+              <!-- retries -->
+              <property name="acquireRetryAttempts" value="30" />
+              <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+              <property name="breakAfterAcquireFailure" value="false" />
+              <!-- refreshing connections -->
+              <property name="maxIdleTime" value="180" /> <!-- 3min -->
+              <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+              <!-- timeouts and testing -->
+              <property name="checkoutTimeout" value="5000" /> <!-- 5s -->
+              <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+              <property name="testConnectionOnCheckout" value="true" />
+              <property name="preferredTestQuery" value="SELECT 1" />
+              <property name="testConnectionOnCheckin" value="true" />
+       </bean>
+       <!-- securityAdmin Pool -->
+       <bean id="dataSourceSecurityAdmin" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <!-- GetAccessDAO -->
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
+              <property name="user" value="security_department" />
+              <property name="password" value="ZxEjI8s,bK4cpFe=s#ZMl2BXhxop%~v|=Ak*G?9ADW`}?8" />
+              <!-- pool sizing -->
+              <property name="initialPoolSize" value="3" />
+              <property name="minPoolSize" value="6" />
+              <property name="maxPoolSize" value="1000" />
+              <property name="acquireIncrement" value="3" />
+              <property name="maxStatements" value="0" />
+              <!-- retries -->
+              <property name="acquireRetryAttempts" value="30" />
+              <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+              <property name="breakAfterAcquireFailure" value="false" />
+              <!-- refreshing connections -->
+              <property name="maxIdleTime" value="180" /> <!-- 3min -->
+              <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+              <!-- timeouts and testing -->
+              <property name="checkoutTimeout" value="5000" /> <!-- 5s -->
+              <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+              <property name="testConnectionOnCheckout" value="true" />
+              <property name="preferredTestQuery" value="SELECT 1" />
+              <property name="testConnectionOnCheckin" value="true" />
+       </bean>
+       <!-- authorisation Pool -->
+       <bean id="dataSourceAuthorisation" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <!-- GetAccessDAO -->
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Access_DB_Server" />
+              <property name="user" value="arduino" />
+              <property name="password" value="Ip}%pS#\1`Nj6CSA_uhJANRlsTweV/_KK#X-AqGZQ6gVDvY{E" />
+              <!-- pool sizing -->
+              <property name="initialPoolSize" value="3" />
+              <property name="minPoolSize" value="6" />
+              <property name="maxPoolSize" value="1000" />
+              <property name="acquireIncrement" value="3" />
+              <property name="maxStatements" value="0" />
+              <!-- retries -->
+              <property name="acquireRetryAttempts" value="30" />
+              <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+              <property name="breakAfterAcquireFailure" value="false" />
+              <!-- refreshing connections -->
+              <property name="maxIdleTime" value="180" /> <!-- 3min -->
+              <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+              <!-- timeouts and testing -->
+              <property name="checkoutTimeout" value="5000" /> <!-- 5s -->
+              <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+              <property name="testConnectionOnCheckout" value="true" />
+              <property name="preferredTestQuery" value="SELECT 1" />
+              <property name="testConnectionOnCheckin" value="true" />
+       </bean>
+
+
+       <!--                                             -->
+       <!--                   Beans                     -->
+       <!--                                             -->
+
+
+       <!--                        -->
+       <!--       arduino Beans    -->
+       <!--                        -->
+       <bean id="getAccess" class="server.postgress.arduino.GetAccessDAO">
+              <property name="dataSource" ref="dataSourceArduino" />
+       </bean>
+       <bean id="cashAdminDB" class="server.postgress.arduino.CashAdminDBDAO">
+              <property name="dataSource" ref="dataSourceArduino" />
+       </bean>
+
+
+
+       <!--                        -->
+       <!--     technical Beans    -->
+       <!--                        -->
+       <bean id="TechnicalAdmin" class="server.postgress.admin.TechnicalDAO">
+              <property name="dataSource" ref="dataSourceDeviceAdmin" />
+       </bean>
+
+
+
+       <!--                        -->
+       <!--       reception Beans  -->
+       <!--                        -->
+       <bean id="ReceptionAdmin" class="server.postgress.admin.ReceptionDAO">
+              <property name="dataSource" ref="dataSourceGuestCardAdmin" />
+       </bean>
+
+
+
+       <!--                        -->
+       <!--            hr Beans    -->
+       <!--                        -->
+       <bean id="HRAdmin" class="server.postgress.admin.HRDAO">
+              <property name="dataSource" ref="dataSourceUserAdmin" />
+       </bean>
+
+
+
+       <!--                        -->
+       <!--       security Beans   -->
+       <!--                        -->
+       <bean id="SecurityAdmin" class="server.postgress.admin.SecurityDAO">
+              <property name="dataSource" ref="dataSourceSecurityAdmin" />
+       </bean>
+
+
+       <!--                        -->
+       <!--         server Beans   -->
+       <!--                        -->
+       <bean id="checkRunnable" class="server.postgress.server.dao.CheckRunnableDAO">
+              <property name="dataSource" ref="dataSourceAuthorisation" />
+       </bean>
+       <bean id="getAdminType" class="server.postgress.server.dao.GetAdminTypeDAO">
+              <property name="dataSource" ref="dataSourceAuthorisation" />
+       </bean>
+
+
+</beans>
