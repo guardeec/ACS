@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <bean id="dataSourceLog" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+              <!-- getAccess -->
+              <property name="driverClass" value="org.postgresql.Driver" />
+              <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Syslog_DB_Server" />
+              <property name="user" value="server.services.postgres" />
+              <property name="password" value="admin" />
+              <!-- pool sizing -->
+              <property name="initialPoolSize" value="100" />
+              <property name="minPoolSize" value="10" />
+              <property name="maxPoolSize" value="10000" />
+              <property name="acquireIncrement" value="2" />
+              <property name="maxStatements" value="0" />
+              <!-- retries -->
+              <property name="acquireRetryAttempts" value="30" />
+              <property name="acquireRetryDelay" value="1000" /> <!-- 1s -->
+              <property name="breakAfterAcquireFailure" value="false" />
+              <!-- refreshing connections -->
+              <property name="maxIdleTime" value="60" /> <!-- 1min -->
+              <property name="maxConnectionAge" value="10" /> <!-- 1h -->
+              <!-- timeouts and testing -->
+              <property name="checkoutTimeout" value="1000" /> <!-- 1s -->
+              <property name="idleConnectionTestPeriod" value="60" /> <!-- 60 -->
+              <property name="testConnectionOnCheckout" value="true" />
+              <property name="preferredTestQuery" value="SELECT 1" />
+              <property name="testConnectionOnCheckin" value="true" />
+       </bean>
+
+       <bean id="general_addLog" class="server.postgres.jdbc.SetGeneralDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="employee_addLog" class="server.postgres.jdbc.client.admin.EmployeeDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="guest_addLog" class="server.postgres.jdbc.client.admin.GuestDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="account_addLog" class="server.postgres.jdbc.client.admin.AccountDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="card_addLog" class="server.postgres.jdbc.client.admin.CardDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="right_addLog" class="server.postgres.jdbc.client.admin.RightDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="role_addLog" class="server.postgres.jdbc.client.admin.RoleDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="device_addLog" class="server.postgres.jdbc.client.admin.DeviceDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="enterOrOutAdmin_addLog" class="server.postgres.jdbc.client.admin.EnterOrOutAdminDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+
+       <bean id="enterOrOutTheRoom_addLog" class="server.postgres.jdbc.client.arduino.EnterOrOutTheRoomDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="localError" class="server.postgres.jdbc.client.arduino.LocalErrorDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="unauthorizedAccess" class="server.postgres.jdbc.client.arduino.UnauthorizedAccessDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="connectionError_addLog" class="server.postgres.jdbc.client.arduino.ConnectionErrorDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+
+       <bean id="enterOrOutTheSystem_addLog" class="server.postgres.jdbc.client.agent.EnterOrOutTheSystemDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+
+
+</beans>

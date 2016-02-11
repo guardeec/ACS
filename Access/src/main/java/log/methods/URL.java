@@ -7,7 +7,7 @@ public class URL {
 
     private final static String addr = "192.168.1.186:8080/SyslogServer/";
     /*
-    user.client
+    agent.client
      */
     public final static String userClient_enterOrOutTheSystemLog = addr + "userClient/enterOrOutTheSystemLog";
 
