@@ -15,7 +15,7 @@ public class EmployeeDATA extends GeneralParams {
     private String systemRoleTitle;
     private Integer cardId;
 
-    public EmployeeDATA(
+    public void setSpecificParams(
             Integer employeeId,
             String employeeName,
             Integer employeeStateId,

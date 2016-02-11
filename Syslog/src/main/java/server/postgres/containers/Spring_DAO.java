@@ -15,7 +15,7 @@ import server.postgres.jdbc.client.arduino.EnterOtOutTheRoomImpl;
  */
 public interface Spring_DAO {
     ApplicationContext appContext = new ClassPathXmlApplicationContext("JDBC_config.xml");
-    SetGeneralImpl GENERAL_DAO                                           = (SetGeneralDAO) appContext.getBean("GENEREAL_LOG");
+    SetGeneralImpl GENERAL_DAO                                           = (SetGeneralDAO) appContext.getBean("GENERAL_LOG");
 
     EmplyeeImpl EMPLOYEE_DAO                          = (EmployeeDAO) appContext.getBean("EMPLOYEE_LOG");
     GuestImpl GUEST_DAO                        = (GuestDAO) appContext.getBean("GUEST_LOG");

@@ -18,6 +18,19 @@ public class GetAccessData extends GeneralParams {
     private String type;
     private String message;
 
+    public void setSpecificParams(Integer deviceId, String cardNumber, Integer cardId, Integer employeeId, String employeeName, Integer systemRoleId, String systemRoleTitle, Boolean access, String type, String message) {
+        this.deviceId = deviceId;
+        this.cardNumber = cardNumber;
+        this.cardId = cardId;
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+        this.systemRoleId = systemRoleId;
+        this.systemRoleTitle = systemRoleTitle;
+        this.access = access;
+        this.type = type;
+        this.message = message;
+    }
+
     public Integer getDeviceId() {
         return deviceId;
     }

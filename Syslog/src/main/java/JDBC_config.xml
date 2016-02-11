@@ -30,48 +30,48 @@
               <property name="testConnectionOnCheckin" value="true" />
        </bean>
 
-       <bean id="general_addLog" class="server.postgres.jdbc.SetGeneralDAO">
+       <bean id="GENERAL_LOG" class="server.postgres.jdbc.SetGeneralDAO">
               <property name="dataSource" ref="dataSourceLog" />
        </bean>
-       <bean id="employee_addLog" class="server.postgres.jdbc.client.admin.EmployeeDAO">
+       <bean id="EMPLOYEE_LOG" class="server.postgres.jdbc.client.admin.EmployeeDAO">
               <property name="dataSource" ref="dataSourceLog" />
        </bean>
-       <bean id="guest_addLog" class="server.postgres.jdbc.client.admin.GuestDAO">
+       <bean id="GUEST_LOG" class="server.postgres.jdbc.client.admin.GuestDAO">
               <property name="dataSource" ref="dataSourceLog" />
        </bean>
-       <bean id="account_addLog" class="server.postgres.jdbc.client.admin.AccountDAO">
+       <bean id="ACCOUNT_LOG" class="server.postgres.jdbc.client.admin.AccountDAO">
               <property name="dataSource" ref="dataSourceLog" />
        </bean>
-       <bean id="card_addLog" class="server.postgres.jdbc.client.admin.CardDAO">
+       <bean id="CARD_LOG" class="server.postgres.jdbc.client.admin.CardDAO">
               <property name="dataSource" ref="dataSourceLog" />
        </bean>
-       <bean id="right_addLog" class="server.postgres.jdbc.client.admin.RightDAO">
+       <bean id="RIGHT_LOG" class="server.postgres.jdbc.client.admin.RightDAO">
               <property name="dataSource" ref="dataSourceLog" />
        </bean>
-       <bean id="role_addLog" class="server.postgres.jdbc.client.admin.RoleDAO">
+       <bean id="ROLE_LOG" class="server.postgres.jdbc.client.admin.RoleDAO">
               <property name="dataSource" ref="dataSourceLog" />
        </bean>
-       <bean id="device_addLog" class="server.postgres.jdbc.client.admin.DeviceDAO">
+       <bean id="DEVICE_LOG" class="server.postgres.jdbc.client.admin.DeviceDAO">
               <property name="dataSource" ref="dataSourceLog" />
        </bean>
-       <bean id="enterOrOutAdmin_addLog" class="server.postgres.jdbc.client.admin.EnterOrOutAdminDAO">
-              <property name="dataSource" ref="dataSourceLog" />
-       </bean>
-
-       <bean id="enterOrOutTheRoom_addLog" class="server.postgres.jdbc.client.arduino.EnterOrOutTheRoomDAO">
-              <property name="dataSource" ref="dataSourceLog" />
-       </bean>
-       <bean id="localError" class="server.postgres.jdbc.client.arduino.LocalErrorDAO">
-              <property name="dataSource" ref="dataSourceLog" />
-       </bean>
-       <bean id="unauthorizedAccess" class="server.postgres.jdbc.client.arduino.UnauthorizedAccessDAO">
-              <property name="dataSource" ref="dataSourceLog" />
-       </bean>
-       <bean id="connectionError_addLog" class="server.postgres.jdbc.client.arduino.ConnectionErrorDAO">
+       <bean id="ENTEROROUTADMIN_LOG" class="server.postgres.jdbc.client.admin.EnterOrOutAdminDAO">
               <property name="dataSource" ref="dataSourceLog" />
        </bean>
 
-       <bean id="enterOrOutTheSystem_addLog" class="server.postgres.jdbc.client.agent.EnterOrOutTheSystemDAO">
+       <bean id="ENTEROROUTTHEROOM_LOG" class="server.postgres.jdbc.client.arduino.EnterOrOutTheRoomDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="LOCALERROR_LOG" class="server.postgres.jdbc.client.arduino.LocalErrorDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="UNAUTHORIZEDACCES_LOG" class="server.postgres.jdbc.client.arduino.UnauthorizedAccessDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+       <bean id="CONNECTIONERROR_LOG" class="server.postgres.jdbc.client.arduino.ConnectionErrorDAO">
+              <property name="dataSource" ref="dataSourceLog" />
+       </bean>
+
+       <bean id="ENTEROROUTTHESYSTEM_LOG" class="server.postgres.jdbc.client.agent.EnterOrOutTheSystemDAO">
               <property name="dataSource" ref="dataSourceLog" />
        </bean>
 

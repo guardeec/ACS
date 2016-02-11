@@ -18,7 +18,7 @@ public abstract class GeneralParams {
     private Boolean generalResultType;
     private String generalDescription;
 
-    public void setGeneralParams(
+    public void setSourceParams(
             Integer sourceTypeId,
             String sourceIp,
             String sourceMac,
