@@ -1,32 +1,41 @@
 package tests;
 
-import org.junit.Assert;
-import soap.hr.EmployeeDATA;
-import soap.hr.HRSoap;
-import soap.hr.HRSoapService;
-import soap.security.CardDATA;
-
-import java.util.List;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Created by Guardeec on 12.02.16.
  */
 public class Test_HR {
-
-
-
-    public void test_addGuest(){
-        HRSoapService hrSoapService = new HRSoapService();
-        HRSoap hrSoap = hrSoapService.getHRSoapPort();
-
-        List<CardDATA> list = (List<CardDATA>) hrSoap.hrMethods("CARD_READ", new EmployeeDATA());
-
-        for (CardDATA cardDATA : list){
-            System.out.println(cardDATA.getCardId());
-        }
-        if (list==null){
-            Assert.fail();
-        }
+    @Before
+    public void init(){
     }
 
+    @Test
+    public void test_EMPLOYEE_ADD(){
+    }
+    @Test
+    public void test_EMPLOYEE_UPDATE(){
+    }
+    @Test
+    public void test_EMPOLOYEE_DELETE(){
+    }
+    @Test
+    public void test_EMPLOYEE_GET(){
+    }
+
+
+    @Test
+    public void test_FREECARDS_GET(){
+    }
+
+
+    @Test
+    public void test_ROLES_GET(){
+    }
+
+    @After
+    public void clear(){
+    }
 }

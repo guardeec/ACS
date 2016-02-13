@@ -42,12 +42,6 @@ public class TechnicalMethods {
     }
 
     public static LinkedList<DeviceDATA> getDevice(DeviceDATA deviceDATA){
-        TechnicalSOAPService technicalSOAPService = new TechnicalSOAPService();
-        TechnicalSOAP technicalSOAP = technicalSOAPService.getTechnicalSOAPPort();
-
-        LinkedList<DeviceDATA> deviceDATAList = (LinkedList<DeviceDATA>) technicalSOAP.technicalMethods("DEVICE_READ", deviceDATA);
-
-        return deviceDATAList;
-
+        return null;
     }
 }
