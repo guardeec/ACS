@@ -7,7 +7,7 @@
               <!-- getAccess -->
               <property name="driverClass" value="org.postgresql.Driver" />
               <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/test_Syslog_DB_Server" />
-              <property name="user" value="server.services.postgres" />
+              <property name="user" value="postgres" />
               <property name="password" value="admin" />
               <!-- pool sizing -->
               <property name="initialPoolSize" value="100" />

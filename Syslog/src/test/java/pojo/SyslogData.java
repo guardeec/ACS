@@ -11,7 +11,7 @@ import pojo.client.arduino.UnuathorizedAccessDATA;
  * Created by root on 29.10.15.
  */
 public class SyslogData {
-    public static final String URL_SYSLOG = "http://localhost:8080/addLog";
+    public static final String URL_SYSLOG = "http://192.168.1.96:8080/Syslog%5Fwar/addLog";
 
     private static EmployeeDATA employeeDATA = new EmployeeDATA();
     private static GuestDATA guestDATA = new GuestDATA();

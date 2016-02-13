@@ -1,4 +1,6 @@
 package server.services.client.admin;
+
+import com.google.gson.Gson;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pojo.client.admin.DeviceDATA;
@@ -15,6 +17,7 @@ import javax.jws.WebService;
 public class TechnicalSOAP {
   private final ApplicationContext appContext = new ClassPathXmlApplicationContext("server/JDBC_config.xml");
   private final TechnicalImpl DAO = (TechnicalDAO) appContext.getBean("TechnicalAdmin");
+  private final Gson gson = new Gson();
   @WebMethod
   public Object technicalMethods(
           String targetAndCRUD,
@@ -25,7 +28,7 @@ public class TechnicalSOAP {
         return DAO.addDevice(deviceDATA);
       }
       case "DEVICE_READ":{
-        return DAO.getDevice(deviceDATA);
+        return gson.toJson(DAO.getDevice(deviceDATA));
       }
       case "DEVICE_UPDATE":{
         return DAO.changeDevice(deviceDATA);

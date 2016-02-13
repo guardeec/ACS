@@ -1,4 +1,5 @@
 package server.services.client.admin;
+import com.google.gson.Gson;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pojo.client.admin.GuestDATA;
@@ -15,6 +16,7 @@ import javax.jws.WebService;
 public class ReceptionSOAP {
   private final ApplicationContext appContext = new ClassPathXmlApplicationContext("server/JDBC_config.xml");
   private final ReceptionImpl DAO = (ReceptionDAO) appContext.getBean("ReceptionAdmin");
+  private final Gson gson = new Gson();
   @WebMethod
   public Object receptionMethods(
           String targetAndCrud,
@@ -25,7 +27,7 @@ public class ReceptionSOAP {
         return DAO.addGuest(guestDATA);
       }
       case "GUEST_READ":{
-        return DAO.getGuests(guestDATA);
+        return gson.toJson(DAO.getGuests(guestDATA));
       }
       case "GUEST_READ_HISTORY":{
         return DAO.getGuestsHistory(guestDATA);
@@ -37,7 +39,7 @@ public class ReceptionSOAP {
         return DAO.deleteGust(guestDATA);
       }
       case "CARD_READ":{
-        return DAO.getFreeCards();
+        return gson.toJson(DAO.getFreeCards());
       }
       case "EXPIRED_CARDS_DELETE":{
         DAO.deleteExpiredCards();

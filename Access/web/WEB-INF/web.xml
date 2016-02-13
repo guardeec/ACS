@@ -3,18 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
     <listener>
         <listener-class>com.sun.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
     </listener>
+
     <servlet>
         <description>JAX-WS endpoint</description>
-        <display-employeeName>WSServlet</display-employeeName>
-        <servlet-employeeName>WSServlet</servlet-employeeName>
+        <display-name>WSServlet</display-name>
+        <servlet-name>WSServlet</servlet-name>
         <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+
     <servlet-mapping>
-        <servlet-employeeName>WSServlet</servlet-employeeName>
+        <servlet-name>WSServlet</servlet-name>
         <url-pattern>/server.services/*</url-pattern>
     </servlet-mapping>
+
 </web-app>

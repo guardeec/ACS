@@ -2,20 +2,21 @@
 
 <endpoints xmlns='http://java.sun.com/xml/ns/jax-ws/ri/runtime' version='2.0'>
 
+
     <endpoint
-            employeeName='TechnicalSOAP'
-            implementation='server.server.services.client.admin.TechnicalSOAP'
+            name='TechnicalSOAP'
+            implementation='server.services.client.admin.TechnicalSOAP'
             url-pattern='/server.services/TechnicalSOAP'/>
     <endpoint
-            employeeName='SecuritySOAP'
-            implementation='server.server.services.client.admin.SecuritySOAP'
+            name='SecuritySOAP'
+            implementation='server.services.client.admin.SecuritySOAP'
             url-pattern='/server.services/SecuritySOAP'/>
     <endpoint
-            employeeName='ReceptionSOAP'
-            implementation='server.server.services.client.admin.ReceptionSOAP'
+            name='ReceptionSOAP'
+            implementation='server.services.client.admin.ReceptionSOAP'
             url-pattern='/server.services/ReceptionSOAP'/>
     <endpoint
-            employeeName='HRSoap'
-            implementation='server.server.services.client.admin.HRSoap'
+            name='HRSoap'
+            implementation='server.services.client.admin.HRSoap'
             url-pattern='/server.services/HRSoap'/>
 </endpoints>

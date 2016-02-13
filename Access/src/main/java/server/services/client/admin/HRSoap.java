@@ -1,4 +1,5 @@
 package server.services.client.admin;
+import com.google.gson.Gson;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pojo.client.admin.EmployeeDATA;
@@ -15,7 +16,7 @@ import javax.jws.WebService;
 public class HRSoap {
   private final ApplicationContext appContext = new ClassPathXmlApplicationContext("server/JDBC_config.xml");
   private final HRImpl DAO = (HRDAO) appContext.getBean("HRAdmin");
-
+  private  final Gson gson = new Gson();
   @WebMethod
   public Object HRMethods(
           String targetAndCrud,
@@ -25,8 +26,8 @@ public class HRSoap {
       case "EMPLOYEE_CREATE":{
         return DAO.addEmployee(employeeDATA);
       }
-      case "EMPLYEE_READ":{
-        return DAO.getEmployee(employeeDATA);
+      case "EMPLOYEE_READ":{
+        return gson.toJson(DAO.getEmployee(employeeDATA));
       }
       case "EMPLOYEE_UPDATE":{
         return DAO.changeEmployee(employeeDATA);
@@ -35,10 +36,10 @@ public class HRSoap {
         return DAO.deleteEmployee(employeeDATA);
       }
       case "CARD_READ":{
-        return DAO.getFreeCards();
+        return gson.toJson(DAO.getFreeCards());
       }
       case "ROLE_READ":{
-        return DAO.getRoles();
+        return gson.toJson(DAO.getRoles());
       }
       default:{
         return null;

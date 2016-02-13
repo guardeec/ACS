@@ -1,4 +1,5 @@
 package server.services.client.admin;
+import com.google.gson.Gson;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import pojo.client.admin.*;
@@ -15,8 +16,9 @@ import javax.jws.WebService;
 public class SecuritySOAP {
   private final ApplicationContext appContext = new ClassPathXmlApplicationContext("server/JDBC_config.xml");
   private final SecurityImpl DAO = (SecurityDAO) appContext.getBean("SecurityAdmin");
+  private final Gson gson = new Gson();
   @WebMethod
-  public Object sayHelloWorldFrom(
+  public Object securityMethods(
           String targetAndCRUD,
           AccountDATA accountDATA,
           CardDATA cardDATA,
@@ -30,7 +32,7 @@ public class SecuritySOAP {
         return DAO.addAccount(accountDATA);
       }
       case "ACCOUNT_READ":{
-        return DAO.getAccount(accountDATA);
+        return gson.toJson(DAO.getAccount(accountDATA));
       }
       case "ACCOUNT_UPDATE":{
         return DAO.changeAccount(accountDATA);
@@ -43,18 +45,18 @@ public class SecuritySOAP {
         return DAO.addCard(cardDATA);
       }
       case "CARD_READ":{
-        return DAO.getCard(cardDATA);
+        return gson.toJson(DAO.getCard(cardDATA));
       }
       case "CARD_DELETE":{
         return DAO.deleteCard(cardDATA);
       }
 
       case "DEVICE_READ":{
-        return DAO.getDevice(deviceDATA);
+        return gson.toJson(DAO.getDevice(deviceDATA));
       }
 
       case "RIGHT_READ":{
-        return DAO.getRights(rightDATA);
+        return gson.toJson(DAO.getRights(rightDATA));
       }
       case "RIGHT_UPDATE":{
         return DAO.changeRigth(rightDATA);
@@ -64,7 +66,7 @@ public class SecuritySOAP {
         return DAO.addRole(roleDATA);
       }
       case "ROLE_READ":{
-        return DAO.getRoles(roleDATA);
+        return gson.toJson(DAO.getRoles(roleDATA));
       }
       case "ROLE_UPDATE":{
         return DAO.changeRole(roleDATA);

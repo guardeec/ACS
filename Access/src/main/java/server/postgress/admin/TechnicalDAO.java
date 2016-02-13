@@ -35,7 +35,7 @@ public class TechnicalDAO extends JdbcDaoSupport implements TechnicalImpl {
         try{
             getJdbcTemplate().update(
                     "UPDATE devices SET specification = ? WHERE id = ?;",
-                    deviceDATA.getDeviceSpecification(), deviceDATA.getDeviceIp());
+                    deviceDATA.getDeviceSpecification(), deviceDATA.getDeviceId());
             getJdbcTemplate().update(
                     "UPDATE devices SET ip = ? WHERE id = ?;",
                     deviceDATA.getDeviceIp(), deviceDATA.getDeviceId());
