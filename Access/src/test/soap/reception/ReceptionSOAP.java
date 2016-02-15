@@ -26,6 +26,7 @@ public interface ReceptionSOAP {
 
     /**
      * 
+     * @param arg2
      * @param arg1
      * @param arg0
      * @return
@@ -40,6 +41,8 @@ public interface ReceptionSOAP {
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
-        GuestDATA arg1);
+        GuestDATA arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        CardDATA arg2);
 
 }

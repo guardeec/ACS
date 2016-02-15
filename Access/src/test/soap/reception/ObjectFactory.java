@@ -51,6 +51,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CardDATA }
+     * 
+     */
+    public CardDATA createCardDATA() {
+        return new CardDATA();
+    }
+
+    /**
      * Create an instance of {@link GuestDATA }
      * 
      */

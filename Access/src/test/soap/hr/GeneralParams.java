@@ -49,6 +49,8 @@ import javax.xml.bind.annotation.XmlType;
     "sourceTypeId"
 })
 @XmlSeeAlso({
+    CardDATA.class,
+    RoleDATA.class,
     EmployeeDATA.class
 })
 public abstract class GeneralParams {

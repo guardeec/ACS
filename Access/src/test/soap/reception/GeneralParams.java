@@ -49,6 +49,7 @@ import javax.xml.bind.annotation.XmlType;
     "sourceTypeId"
 })
 @XmlSeeAlso({
+    CardDATA.class,
     GuestDATA.class
 })
 public abstract class GeneralParams {

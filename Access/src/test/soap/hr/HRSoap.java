@@ -17,15 +17,17 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.2
  * 
  */
-@WebService(name = "HRSoap", targetNamespace = "http://admin.client.services.server/")
+@WebService(name = "HRSOAP", targetNamespace = "http://admin.client.services.server/")
 @XmlSeeAlso({
     ObjectFactory.class
 })
-public interface HRSoap {
+public interface HRSOAP {
 
 
     /**
      * 
+     * @param arg3
+     * @param arg2
      * @param arg1
      * @param arg0
      * @return
@@ -35,11 +37,15 @@ public interface HRSoap {
     @WebResult(targetNamespace = "")
     @RequestWrapper(localName = "HRMethods", targetNamespace = "http://admin.client.services.server/", className = "soap.hr.HRMethods")
     @ResponseWrapper(localName = "HRMethodsResponse", targetNamespace = "http://admin.client.services.server/", className = "soap.hr.HRMethodsResponse")
-    @Action(input = "http://admin.client.services.server/HRSoap/HRMethodsRequest", output = "http://admin.client.services.server/HRSoap/HRMethodsResponse")
+    @Action(input = "http://admin.client.services.server/HRSOAP/HRMethodsRequest", output = "http://admin.client.services.server/HRSOAP/HRMethodsResponse")
     public Object hrMethods(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
-        EmployeeDATA arg1);
+        EmployeeDATA arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        CardDATA arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        RoleDATA arg3);
 
 }

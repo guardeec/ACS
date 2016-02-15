@@ -16,7 +16,7 @@
             implementation='server.services.client.admin.ReceptionSOAP'
             url-pattern='/server.services/ReceptionSOAP'/>
     <endpoint
-            name='HRSoap'
-            implementation='server.services.client.admin.HRSoap'
-            url-pattern='/server.services/HRSoap'/>
+            name='HRSOAP'
+            implementation='server.services.client.admin.HRSOAP'
+            url-pattern='/server.services/HRSOAP'/>
 </endpoints>

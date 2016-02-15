@@ -51,6 +51,22 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link CardDATA }
+     * 
+     */
+    public CardDATA createCardDATA() {
+        return new CardDATA();
+    }
+
+    /**
+     * Create an instance of {@link RoleDATA }
+     * 
+     */
+    public RoleDATA createRoleDATA() {
+        return new RoleDATA();
+    }
+
+    /**
      * Create an instance of {@link EmployeeDATA }
      * 
      */

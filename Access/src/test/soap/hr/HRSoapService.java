@@ -17,20 +17,20 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "HRSoapService", targetNamespace = "http://admin.client.services.server/", wsdlLocation = "http://192.168.1.96:8080/Access%5Fwar/server.services/HRSoap?wsdl")
-public class HRSoapService
+@WebServiceClient(name = "HRSOAPService", targetNamespace = "http://admin.client.services.server/", wsdlLocation = "http://localhost:8080/server.services/HRSOAP?wsdl")
+public class HRSOAPService
     extends Service
 {
 
     private final static URL HRSOAPSERVICE_WSDL_LOCATION;
     private final static WebServiceException HRSOAPSERVICE_EXCEPTION;
-    private final static QName HRSOAPSERVICE_QNAME = new QName("http://admin.client.services.server/", "HRSoapService");
+    private final static QName HRSOAPSERVICE_QNAME = new QName("http://admin.client.services.server/", "HRSOAPService");
 
     static {
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://192.168.1.96:8080/Access%5Fwar/server.services/HRSoap?wsdl");
+            url = new URL("http://localhost:8080/server.services/HRSOAP?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }
@@ -38,38 +38,38 @@ public class HRSoapService
         HRSOAPSERVICE_EXCEPTION = e;
     }
 
-    public HRSoapService() {
+    public HRSOAPService() {
         super(__getWsdlLocation(), HRSOAPSERVICE_QNAME);
     }
 
-    public HRSoapService(WebServiceFeature... features) {
+    public HRSOAPService(WebServiceFeature... features) {
         super(__getWsdlLocation(), HRSOAPSERVICE_QNAME, features);
     }
 
-    public HRSoapService(URL wsdlLocation) {
+    public HRSOAPService(URL wsdlLocation) {
         super(wsdlLocation, HRSOAPSERVICE_QNAME);
     }
 
-    public HRSoapService(URL wsdlLocation, WebServiceFeature... features) {
+    public HRSOAPService(URL wsdlLocation, WebServiceFeature... features) {
         super(wsdlLocation, HRSOAPSERVICE_QNAME, features);
     }
 
-    public HRSoapService(URL wsdlLocation, QName serviceName) {
+    public HRSOAPService(URL wsdlLocation, QName serviceName) {
         super(wsdlLocation, serviceName);
     }
 
-    public HRSoapService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
+    public HRSOAPService(URL wsdlLocation, QName serviceName, WebServiceFeature... features) {
         super(wsdlLocation, serviceName, features);
     }
 
     /**
      * 
      * @return
-     *     returns HRSoap
+     *     returns HRSOAP
      */
-    @WebEndpoint(name = "HRSoapPort")
-    public HRSoap getHRSoapPort() {
-        return super.getPort(new QName("http://admin.client.services.server/", "HRSoapPort"), HRSoap.class);
+    @WebEndpoint(name = "HRSOAPPort")
+    public HRSOAP getHRSOAPPort() {
+        return super.getPort(new QName("http://admin.client.services.server/", "HRSOAPPort"), HRSOAP.class);
     }
 
     /**
@@ -77,11 +77,11 @@ public class HRSoapService
      * @param features
      *     A list of {@link javax.xml.ws.WebServiceFeature} to configure on the proxy.  Supported features not in the <code>features</code> parameter will have their default values.
      * @return
-     *     returns HRSoap
+     *     returns HRSOAP
      */
-    @WebEndpoint(name = "HRSoapPort")
-    public HRSoap getHRSoapPort(WebServiceFeature... features) {
-        return super.getPort(new QName("http://admin.client.services.server/", "HRSoapPort"), HRSoap.class, features);
+    @WebEndpoint(name = "HRSOAPPort")
+    public HRSOAP getHRSOAPPort(WebServiceFeature... features) {
+        return super.getPort(new QName("http://admin.client.services.server/", "HRSOAPPort"), HRSOAP.class, features);
     }
 
     private static URL __getWsdlLocation() {

@@ -2,6 +2,7 @@ package server.services.client.admin;
 import com.google.gson.Gson;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pojo.client.admin.CardDATA;
 import pojo.client.admin.GuestDATA;
 import server.postgress.admin.ReceptionDAO;
 import server.postgress.admin.ReceptionImpl;
@@ -20,7 +21,8 @@ public class ReceptionSOAP {
   @WebMethod
   public Object receptionMethods(
           String targetAndCrud,
-          GuestDATA guestDATA
+          GuestDATA guestDATA,
+          CardDATA cardDATA
   ) {
     switch (targetAndCrud){
       case "GUEST_CREATE":{
