@@ -20,10 +20,10 @@ public class SoapURL {
 
     private SoapURL() {
         try {
-            this.HR_URL = new URL("http://localhost:8080/server.services/HRSOAP?wsdl");
-            this.RECEPTION_URL = new URL("http://localhost:8080/server.services/ReceptionSOAP?wsdl");
-            this.SECURITY_URL = new URL("http://localhost:8080/server.services/SecuritySOAP?wsdl");
-            this.TECHNICAL_URL = new URL("http://localhost:8080/server.services/TechnicalSOAP?wsdl");
+            this.HR_URL = new URL("http://192.168.1.96:8080/Access%5Fwar/server.services/HRSOAP?wsdl");
+            this.RECEPTION_URL = new URL("http://192.168.1.96:8080/Access%5Fwar/server.services/ReceptionSOAP?wsdl");
+            this.SECURITY_URL = new URL("http://192.168.1.96:8080/Access%5Fwar/server.services/SecuritySOAP?wsdl");
+            this.TECHNICAL_URL = new URL("http://192.168.1.96:8080/Access%5Fwar/server.services/TechnicalSOAP?wsdl");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }

@@ -41,7 +41,7 @@ public class SecuritySOAP {
         return DAO.deleteAccount(accountDATA);
       }
 
-      case "CARD_ADD":{
+      case "CARD_CREATE":{
         return DAO.addCard(cardDATA);
       }
       case "CARD_READ":{
