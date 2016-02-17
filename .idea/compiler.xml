@@ -23,30 +23,18 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="Access" />
         <module name="AdminClient" />
         <module name="ArduinoClient" />
-      </profile>
-      <profile default="false" name="Annotation profile for Access" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="Access" />
-      </profile>
-      <profile default="false" name="Annotation profile for Syslog" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
         <module name="Syslog" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Access" target="1.7" />
+      <module name="Access" target="1.5" />
       <module name="ACS" target="1.5" />
       <module name="AdminClient" target="1.5" />
       <module name="ArduinoClient" target="1.5" />
-      <module name="Syslog" target="1.7" />
+      <module name="Syslog" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
