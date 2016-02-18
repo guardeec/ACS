@@ -30,11 +30,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Access" target="1.5" />
-      <module name="ACS" target="1.5" />
+      <module name="Access" target="1.8" />
+      <module name="ACS" target="1.8" />
       <module name="AdminClient" target="1.5" />
       <module name="ArduinoClient" target="1.5" />
-      <module name="Syslog" target="1.5" />
+      <module name="Syslog" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

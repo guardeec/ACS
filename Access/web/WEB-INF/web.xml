@@ -15,10 +15,34 @@
         <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>GetAccess</servlet-name>
+        <servlet-class>server.services.client.arduino.GetAccessServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CashAdminDB</servlet-name>
+        <servlet-class>server.services.client.arduino.CashAdminDBServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CheckConnection</servlet-name>
+        <servlet-class>server.services.server.checkRunnable</servlet-class>
+    </servlet>
 
     <servlet-mapping>
         <servlet-name>WSServlet</servlet-name>
         <url-pattern>/server.services/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetAccess</servlet-name>
+        <url-pattern>/getAccess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CashAdminDB</servlet-name>
+        <url-pattern>/cacheAdminDB</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CheckConnection</servlet-name>
+        <url-pattern>/checkConnection</url-pattern>
     </servlet-mapping>
 
 </web-app>

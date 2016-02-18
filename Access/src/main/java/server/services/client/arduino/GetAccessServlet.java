@@ -24,7 +24,7 @@ public class GetAccessServlet extends HttpServlet {
     private final GetAccessImpl DAO = (GetAccessDAO) appContext.getBean("getAccess");
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String[] message = (String[]) request.getParameterMap().get("message");
+        String[] message = request.getParameterMap().get("message");
         PrintWriter out = response.getWriter();
         out.println(gson.toJson(DAO.Get(gson.fromJson(message[0], GetAccessData.class))));
     }

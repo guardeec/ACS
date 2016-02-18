@@ -23,7 +23,7 @@ public class CashAdminDBServlet extends HttpServlet {
     private final CashAdminDBImpl adminDB = (CashAdminDBImpl) appContext.getBean("cashAdminDB");
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String[] message = (String[]) request.getParameterMap().get("message");
+        String[] message = request.getParameterMap().get("message");
         PrintWriter out = response.getWriter();
         out.println(gson.toJson(adminDB.get(gson.fromJson(message[0], CashAdminDBData.class))));
     }
