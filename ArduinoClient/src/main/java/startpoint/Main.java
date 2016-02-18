@@ -39,10 +39,10 @@ public class Main {
 
         if (args[0].compareTo("-config")==0){
             Initialization.startInitialization(args[1]);
-            new CheckConnection().run();
-            new CashAdminDB().run();
-            new Access().run();
-            new Shutdown().run();
+            new CheckConnection().start();
+            new CashAdminDB().start();
+            new Access().start();
+            new Shutdown().start();
         }
 
 

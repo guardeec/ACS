@@ -65,6 +65,7 @@ public class Initialization {
                 new File(initializationParams.getAdminDBFile())
         };
         makeFiles(files);
+        System.out.println("Initialization Success");
     }
 
     private static void makeFiles(File[] files){

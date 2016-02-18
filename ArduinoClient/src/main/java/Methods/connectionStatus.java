@@ -16,6 +16,7 @@ public class ConnectionStatus {
             PrintWriter out = new PrintWriter(file.getAbsoluteFile());
             out.write("1");
             out.close();
+            System.out.println("Server is down");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -27,6 +28,7 @@ public class ConnectionStatus {
             PrintWriter out = new PrintWriter(file.getAbsoluteFile());
             out.write("");
             out.close();
+            System.out.println("Server is up");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

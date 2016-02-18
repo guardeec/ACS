@@ -28,7 +28,9 @@ public class Access extends Thread{
 
                 //если соединение с сервером присутсивует
                 if (!fileMethods.isEmpty(readFile)){
+                    System.out.println("Getting CardNumber");
                     if (connectionStatus.get()){
+                        System.out.println("Request to Server");
                         try {
                             String cardNumber = fileMethods.read(readFile);
                             GetAccessData getAccessData = new GetAccessData();
@@ -38,11 +40,14 @@ public class Access extends Thread{
                             fileMethods.write(readFile, "");
 
                             fileMethods.write(writeFile, "name="+getAccessData.getEmployeeName()+"&id="+getAccessData.getEmployeeId().toString()+"&access="+getAccessData.getAccess().toString());
+
+                            System.out.println("Getting user Info from AS Success");
                         } catch (FileNotFoundException e) {
                             e.printStackTrace();
                             System.exit(0);
                         }
                     }else {
+                        System.out.println("Request to LocalDB");
                         try {
                             String cardNumber = fileMethods.read(readFile);
                             GetAccessData getAccessData = new GetAccessData();
@@ -52,6 +57,7 @@ public class Access extends Thread{
                             fileMethods.write(readFile, "");
 
                             fileMethods.write(writeFile, "name="+getAccessData.getEmployeeName()+"&id="+getAccessData.getEmployeeId().toString()+"&access="+getAccessData.getAccess().toString());
+                            System.out.println("Getting user Info from LDB Success");
                         } catch (FileNotFoundException e){
                             e.printStackTrace();
                             System.exit(0);
