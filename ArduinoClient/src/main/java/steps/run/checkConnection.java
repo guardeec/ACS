@@ -9,14 +9,20 @@ import methods.ConnectionStatus;
 public class CheckConnection extends Thread {
 
     public void run() {
-        AccessServerRequest accessServerRequest = new AccessServerRequest();
-        ConnectionStatus connectionStatus = new ConnectionStatus();
-        for (;;){
-            if (accessServerRequest.CheckConnection()){
-                connectionStatus.setYesConnetion();
-            }else {
-                connectionStatus.setNoConnection();
+        try {
+            AccessServerRequest accessServerRequest = new AccessServerRequest();
+            ConnectionStatus connectionStatus = new ConnectionStatus();
+            for (;;){
+                System.out.println("Checking Connection");
+                if (accessServerRequest.CheckConnection()){
+                    connectionStatus.setYesConnetion();
+                }else {
+                    connectionStatus.setNoConnection();
+                }
+                Thread.sleep(10000);
             }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }

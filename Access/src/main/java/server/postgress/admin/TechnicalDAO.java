@@ -17,8 +17,8 @@ public class TechnicalDAO extends JdbcDaoSupport implements TechnicalImpl {
         Integer id;
         try{
             id = getJdbcTemplate().queryForObject(
-                    "INSERT INTO devices(specification, ip) VALUES (?, ?) RETURNING id;",
-                    new Object[]{deviceDATA.getDeviceSpecification(), deviceDATA.getDeviceIp()},
+                    "INSERT INTO devices (spec, ip, mac) VALUES (?, ?, ?) RETURNING id;",
+                    new Object[]{deviceDATA.getDeviceSpecification(), deviceDATA.getDeviceIp(), deviceDATA.getDeviceMac()},
                     Integer.class
             );
             deviceDATA.setDeviceId(id);
@@ -34,11 +34,8 @@ public class TechnicalDAO extends JdbcDaoSupport implements TechnicalImpl {
 
         try{
             getJdbcTemplate().update(
-                    "UPDATE devices SET specification = ? WHERE id = ?;",
-                    deviceDATA.getDeviceSpecification(), deviceDATA.getDeviceId());
-            getJdbcTemplate().update(
-                    "UPDATE devices SET ip = ? WHERE id = ?;",
-                    deviceDATA.getDeviceIp(), deviceDATA.getDeviceId());
+                    "UPDATE devices SET spec = ?, ip = ?, mac = ? WHERE id = ?;",
+                    deviceDATA.getDeviceSpecification(), deviceDATA.getDeviceIp(), deviceDATA.getDeviceMac(), deviceDATA.getDeviceId());
             deviceDATA.setGeneralDescription("SUCCESS");
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             deviceDATA.setGeneralDescription("FAIL");
@@ -64,8 +61,8 @@ public class TechnicalDAO extends JdbcDaoSupport implements TechnicalImpl {
         List<DeviceDATA> deviceDATAList;
         try{
             deviceDATAList = (List<DeviceDATA>) getJdbcTemplate().queryForObject(
-                    "SELECT * FROM devices WHERE id = coalesce(?,id) AND ip = coalesce(?,ip) AND specification = coalesce(?,specification) ORDER BY id;",
-                    new Object[]{deviceDATA.getDeviceId(), deviceDATA.getDeviceIp(), deviceDATA.getDeviceSpecification()},
+                    "SELECT * FROM devices WHERE id = coalesce(?, id) AND ip = coalesce(?, ip) AND mac = coalesce(?, mac) AND spec = coalesce(?, spec) ORDER BY id;",
+                    new Object[]{deviceDATA.getDeviceId(), deviceDATA.getDeviceIp(), deviceDATA.getDeviceSpecification(), deviceDATA.getDeviceSpecification()},
                     new SearchRowMapper()
             );
         }catch (org.springframework.dao.EmptyResultDataAccessException ex){
@@ -86,8 +83,9 @@ public class TechnicalDAO extends JdbcDaoSupport implements TechnicalImpl {
                 DeviceDATA deviceDATA = new DeviceDATA();
 
                 deviceDATA.setDeviceId(resultSet.getInt("id"));
-                deviceDATA.setDeviceSpecification(resultSet.getString("specification"));
+                deviceDATA.setDeviceSpecification(resultSet.getString("spec"));
                 deviceDATA.setDeviceIp(resultSet.getString("ip"));
+                deviceDATA.setDeviceMac(resultSet.getString("mac"));
 
                 deviceDATAList.add(deviceDATA);
             }while (resultSet.next());

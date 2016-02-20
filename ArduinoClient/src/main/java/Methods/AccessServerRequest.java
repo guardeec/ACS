@@ -35,7 +35,7 @@ public class AccessServerRequest {
     }
 
     public GetAccessData getAccessDataFromLocalDB(GetAccessData getAccessData) throws FileNotFoundException {
-        getAccessData.setEmployeeId(null);
+        getAccessData.setEmployeeId(0);
         getAccessData.setEmployeeName("NOT_ADMIN");
         getAccessData.setAccess(false);
         File fileMethods = new File();

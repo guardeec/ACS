@@ -20,7 +20,7 @@ public class HRDAO extends JdbcDaoSupport implements HRImpl {
 
         try{
             Integer id = getJdbcTemplate().queryForObject(
-                    "INSERT INTO employees(name,employee_status_id) VALUES (?, 1) RETURNING id;",
+                    "INSERT INTO  empl(name) VALUES (?) RETURNING id;",
                     new Object[]{employeeDATA.getEmployeeName()},
                     Integer.class
             );
@@ -28,15 +28,16 @@ public class HRDAO extends JdbcDaoSupport implements HRImpl {
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             employeeDATA.setEmployeeId(null);
             employeeDATA.setGeneralDescription("FAIL");
+            return employeeDATA;
         }
 
         if (employeeDATA.getEmployeeId()!=null){
             try{
                 getJdbcTemplate().update(
-                        "INSERT INTO employees_and_cards VALUES (?,?);",
+                        "INSERT INTO empl_and_cards VALUES (?,?);",
                         employeeDATA.getEmployeeId(), employeeDATA.getCardId());
                 getJdbcTemplate().update(
-                        "INSERT INTO employees_and_roles VALUES (?,?);",
+                        "INSERT INTO empl_and_r VALUES (?,?);",
                         employeeDATA.getEmployeeId(), employeeDATA.getSystemRoleId());
                 employeeDATA.setGeneralDescription("SUCCESS");
             }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
@@ -50,14 +51,14 @@ public class HRDAO extends JdbcDaoSupport implements HRImpl {
     @Override
     public EmployeeDATA changeEmployee(EmployeeDATA employeeDATA) {
         try{
-            if(employeeDATA.getEmployeeName() != null){
+            if(employeeDATA.getEmployeeName() != null && employeeDATA.getEmployeeStateId()!=null){
                 getJdbcTemplate().update(
-                        "UPDATE employees SET name = ? WHERE id = ?;",
-                        employeeDATA.getEmployeeName(), employeeDATA.getEmployeeId());
+                        "UPDATE empl SET name = ?, st_id = ? WHERE id = ?;",
+                        employeeDATA.getEmployeeName(), employeeDATA.getEmployeeStateId(), employeeDATA.getEmployeeId());
             }
             if (employeeDATA.getSystemRoleId() != null){
                 getJdbcTemplate().update(
-                        "UPDATE employees_and_roles SET system_role_id = ? WHERE employee_id = ?;",
+                        "UPDATE empl_and_r SET sys_r_id = ? WHERE empl_id = 27;",
                         employeeDATA.getSystemRoleId(), employeeDATA.getEmployeeId());
             }
             employeeDATA.setGeneralDescription("SUCCESS");
@@ -73,12 +74,6 @@ public class HRDAO extends JdbcDaoSupport implements HRImpl {
             getJdbcTemplate().update(
                     "DELETE FROM employees_and_cards WHERE employee_id = ?;",
                     employeeDATA.getEmployeeId());
-            getJdbcTemplate().update(
-                    "DELETE FROM employees_and_roles WHERE employee_id = ?;",
-                    employeeDATA.getEmployeeId());
-            getJdbcTemplate().update(
-                    "DELETE FROM employees WHERE id = ?;",
-                    employeeDATA.getEmployeeId());
             employeeDATA.setGeneralDescription("SUCCESS");
         }catch (org.springframework.dao.EmptyResultDataAccessException | org.springframework.jdbc.CannotGetJdbcConnectionException ex){
             employeeDATA.setGeneralDescription("FAIL");
@@ -91,7 +86,7 @@ public class HRDAO extends JdbcDaoSupport implements HRImpl {
         List<EmployeeDATA> employeeDATAList;
         try{
             employeeDATAList = (List<EmployeeDATA>) getJdbcTemplate().queryForObject(
-                    "SELECT employee_id, name, system_role_id FROM employees JOIN employees_and_roles ON id = employee_id JOIN employee_status ON employee_status_id = employee_status.id WHERE employees.id = coalesce(?,employees.id) AND name = coalesce(?,name) AND system_role_id = coalesce(?, system_role_id) AND description = 'unblocked';",
+                    "SELECT empl.id, empl.name, empl_and_r.sys_r_id, empl_st.descr FROM empl JOIN empl_and_r ON empl.id = empl_id JOIN empl_st ON empl.st_id = empl_st.id WHERE empl.id = coalesce(?, empl.id) AND empl.name = coalesce(?, empl.name) AND sys_r_id = coalesce(?, sys_r_id) AND empl_st.cond = TRUE;",
                     new Object[]{employeeDATA.getEmployeeId(), employeeDATA.getEmployeeName(), employeeDATA.getSystemRoleId()},
                     new SearchRowMapper()
             );
@@ -106,7 +101,7 @@ public class HRDAO extends JdbcDaoSupport implements HRImpl {
         List<CardDATA> cardDATAList;
         try{
             cardDATAList = (List<CardDATA>) getJdbcTemplate().queryForObject(
-                    "SELECT id FROM cards WHERE id NOT IN (SELECT card_id FROM employees_and_cards) AND id NOT IN (SELECT card_id FROM guests_and_cards);",
+                    "SELECT id FROM cards WHERE id NOT IN (SELECT card_id FROM empl_and_cards) AND id NOT IN (SELECT card_id FROM guests_and_cards);",
                     new Object[]{},
                     new CardRowMapper()
             );
@@ -124,7 +119,7 @@ public class HRDAO extends JdbcDaoSupport implements HRImpl {
         List<RoleDATA> roleDATAList;
         try{
             roleDATAList = (List<RoleDATA>) getJdbcTemplate().queryForObject(
-                    "SELECT * FROM system_roles WHERE id != 1;",
+                    "SELECT * FROM sys_r WHERE sys_r.id != 1 ORDER BY id;",
                     new Object[]{},
                     new RolesRowMapper()
             );
@@ -141,9 +136,9 @@ public class HRDAO extends JdbcDaoSupport implements HRImpl {
 
             do {
                 EmployeeDATA employeeDATA = new EmployeeDATA();
-                employeeDATA.setEmployeeId(resultSet.getInt("employee_id"));
+                employeeDATA.setEmployeeId(resultSet.getInt("id"));
                 employeeDATA.setEmployeeName(resultSet.getString("name"));
-                employeeDATA.setSystemRoleId(resultSet.getInt("system_role_id"));
+                employeeDATA.setSystemRoleId(resultSet.getInt("sys_r_id"));
                 employeeDATAList.add(employeeDATA);
             }while (resultSet.next());
 
@@ -174,7 +169,7 @@ public class HRDAO extends JdbcDaoSupport implements HRImpl {
 
             do {
                 CardDATA cardDATA = new CardDATA();
-                cardDATA.setCardId(resultSet.getInt("id"));
+                cardDATA.setCardId(resultSet.getInt("card_id"));
                 cardDATAList.add(cardDATA);
             }while (resultSet.next());
 

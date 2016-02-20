@@ -12,9 +12,9 @@ public class File {
     public String read(java.io.File file) throws FileNotFoundException {
         Scanner in = new Scanner(file);
         String message = "";
-        do {
+        while (in.hasNext()) {
             message += in.next();
-        }while (in.hasNext());
+        }
         in.close();
         return message;
     }

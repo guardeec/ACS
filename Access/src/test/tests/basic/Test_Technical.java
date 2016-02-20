@@ -15,6 +15,7 @@ public class Test_Technical {
         DeviceDATA deviceDATA = new DeviceDATA();
         deviceDATA.setDeviceIp("test");
         deviceDATA.setDeviceSpecification("test");
+        deviceDATA.setDeviceMac("aaa");
 
         //проверяем на добавление
         deviceDATA = TechnicalMethods.addDevice(deviceDATA);
